@@ -146,7 +146,7 @@ The starter code for this exercise can be found [here](https://git.generalassemb
 Let's go ahead and clone the repository:
 
 ```bash
-$ git clone git@git.generalassemb.ly:ga-wdi-exercises/flashcards.git
+$ git clone https://git.generalassemb.ly/ga-wdi-exercises/flashcards
 $ npm install
 $ npm start
 ```

@@ -351,23 +351,7 @@ Add a button that, when clicked, toggles whether or not the definition card is d
 
 ## Bonus
 
-### Binding
 
-In React, when we use event methods, we usually have to bind the `this` keyword to the method so that it works properly. Class methods are not bound by default, so `this` is undefined unless we specify otherwise. We could bind `this` to the event each time we call it; however, it is usually more efficient to do so by default in the constructor...
-
-```js
-constructor (props) {
-  super(props)
-  this.handleClick = this.handleClick.bind(this)
-}
-```
-
-Then when we add the event handler, we can just do so just like this:
-
-```js
-<button onClick={this.handleClick}/>
-```
-This is not a React specific behavior, it applies to JavaScript classes in general.
 
 ## Event Handlers
 

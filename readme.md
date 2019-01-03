@@ -38,26 +38,30 @@ Making asynchronous requests (ajax calls), binding event listeners to components
 **Why is it called a lifecycle?**
 It's an action that repeats in a specific order.
 
-![ ](./images/reactjs_component_lifecycle_functions.png  "React-component-lifecycle")
+![ ](./images/react_lifecycle_methods.png  "React-component-lifecycle")
 
 ### At a very high level
 
 There are two types of component lifecycle methods:
 
 * **Mounting** lifecycle methods. e.g. What happens when the component is created? Was an initial state set? Methods:
-  - `constructor()`
-  - `componentWillMount()`
+  - `constructor(props)`
+  - `UNSAFE_componentWillMount()`
+  - `static getDerivedStateFromProps(props, state)`
   - `render()`
   - `componentDidMount()`
-  - `componentWillUnmount()`
 
 * **Updating** lifecycle methods. e.g. Has state changed? Methods:
-  - `componentWillReceiveProps()`
-  - `shouldComponentUpdate()`
-  - `componentWillUpdate()`
+  - `UNSAFE_componentWillReceiveProps()`
+  - `shouldComponentUpdate(nextProps, nextState)`
+  - `UNSAFE_componentWillUpdate()`
   - `render()`
-  - `componentDidUpdate()`
-
+  - `getSnapshotBeforeUpdate(prevProps, prevState)`
+  - `componentDidUpdate(prevProps, prevState, snapshot)`
+ 
+* **Unmounting** lifecycle method when the component is removed from DOM
+  - `componentWillUnmount()`
+	
 The documentation gives good examples of what each method should be used for. [Check out the documentation on components!](https://facebook.github.io/react/docs/react-component.html)
 
 ## We do: Exploring the Lifecycle methods (20 min / 0:40)
@@ -211,19 +215,10 @@ The componentDidMount method is called once, immediately after your component is
 //FlashcardContainer.js
 
 class FlashcardContainer extends Component {
-  constructor() {
-    super()
-    this.state = {
+  state = {
       flashcards: [],
       currentIndex: 0
     }
-
-    // the below methods will be called from other components meaning 'this' will refer to a new scope. Oh no!
-    // Luckily, bind(this) binds the 'this' keyword to refer to the scope of the current FlashcardContainer class
-    this.handleKeyUp = this.handleKeyUp.bind(this)
-    this.next = this.next.bind(this)
-    this.prev = this.prev.bind(this)
-  }
 
   // increment currentIndex
   next () {
@@ -285,12 +280,11 @@ Add a timer to the Flashcard Detail component.
 
 * Initialize the timer to have 10 seconds on it
 * Every second the same flashcard is still on the board, remove a second from it
-> **hint**: use `window.setTimeout()`)
+> **hint**: use `setInterval()`)
 * When the timer reaches zero, switch to the next card
 > **hint**: where did you define the `next()` method? How can you access it from `Flashcard.js`?
 * When the `Flashcard` component receives a new card, restart the timer
 
-> **hint**: use `componentWillReceiveProps`
 
 #### We Do: Adding the Definition Component
 

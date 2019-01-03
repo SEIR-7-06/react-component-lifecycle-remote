@@ -66,7 +66,7 @@ The documentation gives good examples of what each method should be used for. [C
 
 ## We do: Exploring the Lifecycle methods (20 min / 0:40)
 
-Let's clone down [this repository](https://git.generalassemb.ly/ga-wdi-exercises/react-component-lifecycle) with a short exercise for exploring the lifecycle methods.
+Let's clone down [this repository](https://git.generalassemb.ly/SF-WDI/react-component-lifecycle/tree/master/react-component-lifecycle) with a short exercise for exploring the lifecycle methods.
 
 This exercise is a simple, 2 "page" website where each page is a component. We'll be adding the component lifecycle methods to each page-component. As we do consider the following questions:
 
@@ -145,17 +145,19 @@ We will be using Axios to query the PokéAPI in [this exercise](https://git.gene
 
 As we dive deeper in to each of the component lifecycle methods and what they're used for, we'll work through the following exercise to create a simple flashcards app.
 
-The starter code for this exercise can be found [here](https://git.generalassemb.ly/ga-wdi-exercises/flashcards).
+The starter code for this exercise can be found [here](https://git.generalassemb.ly/SF-WDI/flashcards).
 
 Let's go ahead and clone the repository:
 
 ```bash
-$ git clone https://git.generalassemb.ly/ga-wdi-exercises/flashcards
+$ git clone https://git.generalassemb.ly/SF-WDI/flashcards
 $ npm install
 $ npm start
 ```
 
-The app we're going to build will pull characters from a dictionary API and create a flashcard for each word and definition`. The app will then cycle through each word, giving the user 10 seconds to think of the definition before moving on to the next card.
+The app we're going to build will pull characters from a dictionary API and create a flashcard for each word and definition`. The app will then cycle through each word, giving the user 10 seconds to think of the definition before moving on to the next card. 
+
+The solution code is [here](https://git.generalassemb.ly/SF-WDI/flashcards/tree/solution)
 
 ### We Do: Adding the Flashcard Container
 

@@ -20,10 +20,6 @@ class App extends Component {
     console.log(`App.js: In componentDidUpdate(). prevState: ${JSON.stringify(prevState)}`);
   }
 
-  // componentWillUnmount(){
-  //   console.log('App.js In componentWillUnmount()');
-  // }
-
   setPageToHome(e) {
     e.preventDefault()
     this.setState({

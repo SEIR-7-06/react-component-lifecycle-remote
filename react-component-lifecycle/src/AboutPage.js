@@ -3,15 +3,8 @@ import React, { Component } from 'react'
 // Update this component to use the Updating Component Lifecycle methods
 
 export default class AboutPage extends Component {
-  constructor() {
-    super()
-    console.log('AboutPage.js: In constructor()');
-    this.state = {
-      counter: 0
-    }
-
-    this.incrementCounter = this.incrementCounter.bind(this)
-    this.decrementCounter = this.decrementCounter.bind(this)
+  state = {
+    counter: 0
   }
 
   componentDidMount(){
@@ -27,14 +20,14 @@ export default class AboutPage extends Component {
       else update it*/
     // if(nextState.counter+1 === this.state.counter)
     //   return false;
-    return true; //return false to see the change in output. Notice any difference??
+    return false; //return false to see the change in output. Notice any difference??
   }
 
   componentDidUpdate(prevProps, prevState){
     console.log(`AboutPage.js: In componentDidUpdate(). prevState: ${JSON.stringify(prevState)}`);
   }
 
-  incrementCounter() {
+  incrementCounter = () => {
     let { counter } = this.state
     counter++
 
@@ -43,7 +36,7 @@ export default class AboutPage extends Component {
     })
   }
 
-  decrementCounter() {
+  decrementCounter = () => {
     let { counter } = this.state
     counter--
 

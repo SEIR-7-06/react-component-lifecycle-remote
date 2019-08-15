@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 // Update this component to use the Updating Component Lifecycle methods
 
-export default class AboutPage extends Component {
+class AboutPage extends Component {
   state = {
-    counter: 0
+    counter: 0,
   }
 
   componentDidMount(){
@@ -18,9 +18,10 @@ export default class AboutPage extends Component {
     /*uncommment below two lines of code to check 
       if the User is decrementing do not update the counter value
       else update it*/
-    // if(nextState.counter+1 === this.state.counter)
-    //   return false;
-    return false; //return false to see the change in output. Notice any difference??
+      console.log('Next State = ', nextState)
+    if(nextState.counter+1 === this.state.counter)
+      return false;
+    return true; //return false to see the change in output. Notice any difference??
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -28,20 +29,20 @@ export default class AboutPage extends Component {
   }
 
   incrementCounter = () => {
-    let { counter } = this.state
-    counter++
+    let { counter } = this.state;
+    counter++;
 
     this.setState({
-      counter
+      counter,
     })
   }
 
   decrementCounter = () => {
-    let { counter } = this.state
-    counter--
+    let { counter } = this.state;
+    counter--;
 
     this.setState({
-      counter
+      counter,
     })
   }
 
@@ -57,3 +58,5 @@ export default class AboutPage extends Component {
     )
   }
 }
+
+export default AboutPage;

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-export default class HomePage extends Component {
+class HomePage extends Component {
   constructor() {
     super();
     console.log("Home.js: In constructor()");
@@ -19,7 +19,7 @@ export default class HomePage extends Component {
   }
 
   render() {
-    console.log("Home.js: In render()")
+    console.log("Home.js: In render()");
     return (
       <div>
         <h2>Page Title: {this.props.message}</h2>
@@ -28,3 +28,5 @@ export default class HomePage extends Component {
   }
 
 }
+
+export default HomePage;

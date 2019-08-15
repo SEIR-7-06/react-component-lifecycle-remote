@@ -6,14 +6,22 @@ import ErrorPage from './ErrorPage';
 class App extends Component {
   constructor(props) {
     super(props);
-    console.log('App.js: In constructor()')
+    console.log('App.js: In constructor()');
     this.state = {
-      page: 'home'
+      page: 'home',
     }
   }
 
   componentDidMount(){
     console.log('App.js In componentDidMount()');
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(nextState)
+    if (nextState.page === 'about') {
+      return false;
+    }
+    return true;
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -36,21 +44,21 @@ class App extends Component {
 
   render() {
     console.log('App.js: In render()')
-    let Page
-    let pageTitle
+    let Page;
+    let pageTitle;
 
     switch (this.state.page) {
       case 'home':
-        Page = HomePage
-        pageTitle = "Home"
+        Page = HomePage;
+        pageTitle = "Home";
         break;
       case 'about':
-        Page = AboutPage
-        pageTitle = "About"
+        Page = AboutPage;
+        pageTitle = "About";
         break;
       default:
-        Page = ErrorPage
-        pageTitle = "Error"
+        Page = ErrorPage;
+        pageTitle = "Error";
         break;
     }
     

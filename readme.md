@@ -66,7 +66,7 @@ The documentation gives good examples of what each method should be used for. [C
 
 ## We do: Exploring the Lifecycle methods (20 min / 0:40)
 
-Let's clone down [this repository](https://git.generalassemb.ly/SF-WDI/react-component-lifecycle/tree/master/react-component-lifecycle) with a short exercise for exploring the lifecycle methods.
+Let's clone down this repository with a short exercise for exploring the lifecycle methods.
 
 This exercise is a simple, 2 "page" website where each page is a component. We'll be adding the component lifecycle methods to each page-component. As we do consider the following questions:
 

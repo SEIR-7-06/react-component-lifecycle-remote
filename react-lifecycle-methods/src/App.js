@@ -16,14 +16,6 @@ class App extends Component {
     console.log('App.js In componentDidMount()');
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextState)
-    if (nextState.page === 'about') {
-      return false;
-    }
-    return true;
-  }
-
   componentDidUpdate(prevProps, prevState) {
     console.log(`App.js: In componentDidUpdate(). prevState: ${JSON.stringify(prevState)}`);
   }

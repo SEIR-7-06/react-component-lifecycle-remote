@@ -19,8 +19,8 @@ class AboutPage extends Component {
       if the User is decrementing do not update the counter value
       else update it*/
       console.log('Next State = ', nextState)
-    if(nextState.counter+1 === this.state.counter)
-      return false;
+    // if(nextState.counter+1 === this.state.counter)
+    //   return false;
     return true; //return false to see the change in output. Notice any difference??
   }
 

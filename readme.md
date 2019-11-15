@@ -168,14 +168,10 @@ The solution code is [here](https://git.generalassemb.ly/SF-WDI/flashcards/tree/
 // FlashcardContainer.js
 
 class FlashcardContainer extends Component {
-  constructor() {
-    super(); 
-
-    this.state = {
-      flashcards: [],
-      currentIndex: 0
-    }
-  }
+  state = {
+    flashcards: [],
+    currentIndex: 0,
+  };
 
   componentDidMount() {
     axios.get(CLIENT_URL)
@@ -183,14 +179,15 @@ class FlashcardContainer extends Component {
           console.log(response)
           this.setState({flashcards: response.data})
         })
+	.catch(err => console.log(err));
   }
 
   render() {
-    let detail = this.state.flashcards[this.state.currentIndex]
+    let detail = this.state.flashcards[this.state.currentIndex];
     let card;
 
     if(detail) {
-      card = <Flashcard detail={detail}/>
+      card = <Flashcard detail={detail}/>;
     }
 
     return (
@@ -217,48 +214,48 @@ The componentDidMount method is called once, immediately after your component is
 class FlashcardContainer extends Component {
   state = {
       flashcards: [],
-      currentIndex: 0
-    }
+      currentIndex: 0,
+    };
 
   // increment currentIndex
-  next () {
+  next = () => {
     let nextIndex = (this.state.currentIndex + 1) === this.state.flashcards.length
       ? this.state.currentIndex
-      : this.state.currentIndex + 1
+      : this.state.currentIndex + 1;
 
-    this.setState({currentIndex: nextIndex})
+    this.setState({currentIndex: nextIndex});
   }
 
   // decremement currentIndex
-  prev () {
+  prev = () => {
     let prevIndex = (this.state.currentIndex - 1) < 0
       ? 0
-      : (this.state.currentIndex - 1)
+      : (this.state.currentIndex - 1);
 
-    this.setState({currentIndex: prevIndex})
+    this.setState({currentIndex: prevIndex});
   }
 
   // callback to be used in the event listener below
-  handleKeyUp (event) {
-    if (event.keyCode === 39) this.next()
-    if (event.keyCode === 37) this.prev()
+  handleKeyUp = (event) => {
+    if (event.keyCode === 39) this.next();
+    if (event.keyCode === 37) this.prev();
   }
 
   componentDidMount () {
-    window.addEventListener('keyup', this.handleKeyUp)
+    window.addEventListener('keyup', this.handleKeyUp);
 
     axios
       .get(CLIENT_URL)
       .then(response => this.setState({flashcards: response.data}))
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }
 
   render() {
-    let detail = this.state.flashcards[this.state.currentIndex]
+    let detail = this.state.flashcards[this.state.currentIndex];
     let card;
 
     if(detail) {
-      card = <Flashcard detail={detail}/>
+      card = <Flashcard detail={detail}/>;
     }
 
     return (
@@ -317,7 +314,7 @@ export default Definition;
 ...
 class Flashcard extends Component {
   render() {
-    let defs = this.props.detail.definitions[0].definitions 
+    let defs = this.props.detail.definitions[0].definitions;
 
     return (
       <div class="card">

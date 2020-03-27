@@ -63,14 +63,14 @@ The documentation gives good examples of what each method should be used for. [C
 
 ## Group Discussion (10 min / 0:30)
 
-Break out into your groups for 5 minutes, and do the following:
-
-Visit the <a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">React Commonly Used Lifecycle Methods</a> page as a group, and be prepared to answer the following questions:
+Break out into your groups for 5 minutes, and visit the <a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">React Commonly Used Lifecycle Methods</a> page together. Discuss the following questions:
 
 * What is the **only** required method of a class-based component?
 * How many times is `componentDidMount` called in a component's lifecycle?
 * What lifecycle method is called any time a component updates?
 * What is a potential issue that could occur when using `setState` inside of `componentDidUpdate`? How can we avoid this issue?
+
+Be prepared to answer these questions in front of the class!
 
 ## We do: Exploring the Lifecycle methods (20 min / 0:40)
 
@@ -86,15 +86,14 @@ This exercise is a simple, 2 "page" website where each page is a component. We'l
 
 ### An Aside: Axios (10 min / 0:50)
 
-For our first example of working with the component lifecycle methods, we'll be retrieving data from an API using AJAX.
-AJAX calls are asynchronous, so we have to be mindful of how long our request will take and when our components will render.
+For our first example of working with the component lifecycle methods, we'll be retrieving data from an API. API calls are asynchronous, so we have to be mindful of how long our request will take and when our components will render.
 
-We're going to use a module named `axios` to make our calls. Axios is a node module commonly used with React to send HTTP requests to an API. It functions much like jQuery's Ajax method, or window.Fetch(). Some benefits to using Axios:
+We're going to use a module named `axios` to make our calls. Axios is a node module commonly used with React to send HTTP requests to an API. It functions much like jQuery's AJAX method, or window.fetch(). Some benefits to using Axios:
 
 * It is a promise-based library with an interface for simpler and cleaner syntax (compared to native XHR especially).
 * It is lightweight and focused solely on handling HTTP requests (as opposed to jQuery which brings in an extensive set of new functions and methods)
 * It is very configurable and has a number of useful methods for doing more complex requests from one or multiple API endpoints
-* It handles a lot of the http header manual work for you (e.g. send a json file, it sets `Content-Type: application/json`)
+* It handles a lot of the http header manual work for you (e.g. send a JSON file, it sets `Content-Type: application/json`)
 
 Read more at the [Axios Documentation](https://github.com/mzabriskie/axios)
 

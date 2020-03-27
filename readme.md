@@ -10,7 +10,7 @@
 
 So far, we've used React components to build simple applications. We've added state and props and controlled data flow through them (using just the render and setState methods). In order to do more complex things, we'll have to use lifecycle methods.
 
-How do we get data from an API? Well we could drop in an AJAX call to fetch some data, but our component would likely render before the AJAX request finished. Our component would see that our data is `undefined` and either render a blank/empty component or throw an error.
+How do we get data from an API? Well we could drop in an API call to fetch some data, but our component would likely render before the request finished. Our component would see that our data is `undefined` and either render a blank/empty component or throw an error.
 
 How would we animate a component? (i.e. a sidebar that usually lives off the page, except for when a hamburger menu is pressed.) We could write some code to animate the position of the sidebar, but how could we guarantee it was running after our Sidebar component's render method had been called?
 
@@ -30,7 +30,7 @@ Lifecycle methods are called at specific points in the rendering process. You ca
 
 **What do you use lifecycle methods for?**
 
-Making asynchronous requests (ajax calls), binding event listeners to components, animating components (once they've rendered), and optimizing for performance (shouldComponentUpdate).
+Making asynchronous requests (API calls), binding event listeners to components, animating components (once they've rendered), and optimizing for performance (shouldComponentUpdate).
 
 **Why is it called a lifecycle?**
 It's an action that repeats in a specific order.
@@ -208,7 +208,7 @@ class FlashcardContainer extends Component {
 
 </details>
 
-The componentDidMount method is called once, immediately after your component is rendered to the DOM. If you want to make an AJAX request when your component first renders, this is where to do it (not in the constructor, or in componentWillMount). componentWillMount shouldn't be used for server requests because it may be invoked multiple times before render. Side effects should be avoided in the constructor, and so server requests shouldn't be made there.
+The componentDidMount method is called once, immediately after your component is rendered to the DOM. If you want to make an API call when your component first renders, this is where to do it (not in the constructor, or in componentWillMount). componentWillMount shouldn't be used for server requests because it may be invoked multiple times before render. Side effects should be avoided in the constructor, and so server requests shouldn't be made there.
 
 #### Add an event listener to switch between cards
 
@@ -346,10 +346,6 @@ Add a button that, when clicked, toggles whether or not the definition card is d
 * Describe 1-way and 2-way data binding. Which model does React use? Explain and compare to other popular front-end frameworks.
 * Describe how to best gather information from a form in React. Be prepared to show code!
 * Compare and contrast stateful, stateless, and functional components in React. List the pros and cons of each. When would we use one over the other?
-
-## Bonus
-
-
 
 ## Event Handlers
 

@@ -1,4 +1,4 @@
-# Event Handlers and the Component Lifecycle in React
+# React Component Lifecycle
 
 ## Learning Objectives
 * Understand how to use React's lifecycle methods
@@ -8,7 +8,7 @@
 
 ## Framing (10 min / 0:10)
 
-So far, we've used react components to build simple applications. We've added state and props and controlled data flow through them (using just the render and setState methods). In order to do more complex things, we'll have to use lifecycle methods.
+So far, we've used React components to build simple applications. We've added state and props and controlled data flow through them (using just the render and setState methods). In order to do more complex things, we'll have to use lifecycle methods.
 
 How do we get data from an API? Well we could drop in an AJAX call to fetch some data, but our component would likely render before the AJAX request finished. Our component would see that our data is `undefined` and either render a blank/empty component or throw an error.
 
@@ -28,9 +28,6 @@ When you include these methods in the component they will be invoked automatical
 
 Lifecycle methods are called at specific points in the rendering process. You can use these methods to perform actions based on what's happening on the DOM.
 
-* `componentWillUnmount` is called immediately *before* a component is removed from the DOM.
-* `componentDidMount`, for example, is called immediately *after* a component is rendered to the DOM.
-
 **What do you use lifecycle methods for?**
 
 Making asynchronous requests (ajax calls), binding event listeners to components, animating components (once they've rendered), and optimizing for performance (shouldComponentUpdate).
@@ -40,29 +37,40 @@ It's an action that repeats in a specific order.
 
 ![ ](./images/react_lifecycle_methods.png  "React-component-lifecycle")
 
+Click <a href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">here</a> to view the above image as an interactive chart, complete with less common lifecycle methods.
+
 ### At a very high level
 
-There are two types of component lifecycle methods:
+There are three types of component lifecycle methods:
 
-* **Mounting** lifecycle methods. e.g. What happens when the component is created? Was an initial state set? Methods:
-  - `constructor(props)`
-  - `UNSAFE_componentWillMount()`
-  - `static getDerivedStateFromProps(props, state)`
-  - `render()`
-  - `componentDidMount()`
+* **Mounting** - occurs when the component is initially mounted, in this order:
+  - <a href="https://reactjs.org/docs/react-component.html#constructor">`constructor`</a>
+  - <a href="https://reactjs.org/docs/react-component.html#static-getderivedstatefromprops">`getDerivedStateFromProps`</a>
+  - <a href="https://reactjs.org/docs/react-component.html#render">`render`</a>
+  - <a href="https://reactjs.org/docs/react-component.html#componentdidmount">`componentDidMount`</a>
 
-* **Updating** lifecycle methods. e.g. Has state changed? Methods:
-  - `UNSAFE_componentWillReceiveProps()`
-  - `shouldComponentUpdate(nextProps, nextState)`
-  - `UNSAFE_componentWillUpdate()`
-  - `render()`
-  - `getSnapshotBeforeUpdate(prevProps, prevState)`
-  - `componentDidUpdate(prevProps, prevState, snapshot)`
+* **Updating** - occurs when a component is updated, in this order:
+  - <a href="https://reactjs.org/docs/react-component.html#static-getderivedstatefromprops">`getDerivedStateFromProps`</a>
+  - <a href="https://reactjs.org/docs/react-component.html#shouldcomponentupdate">`shouldComponentUpdate`</a>
+  - <a href="https://reactjs.org/docs/react-component.html#render">`render`</a>
+  - <a href="https://reactjs.org/docs/react-component.html#getsnapshotbeforeupdate">`getSnapshotBeforeUpdate`</a>
+  - <a href="https://reactjs.org/docs/react-component.html#componentdidupdate">`componentDidUpdate`</a>
  
-* **Unmounting** lifecycle method when the component is removed from DOM
-  - `componentWillUnmount()`
+* **Unmounting** - occurs when the component is removed from DOM:
+  - <a href="https://reactjs.org/docs/react-component.html#componentwillunmount">`componentWillUnmount`</a>
 	
 The documentation gives good examples of what each method should be used for. [Check out the documentation on components!](https://facebook.github.io/react/docs/react-component.html)
+
+## Group Discussion (10 min / 0:30)
+
+Break out into your groups for 5 minutes, and do the following:
+
+Visit the <a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">React Commonly Used Lifecycle Methods</a> page as a group, and be prepared to answer the following questions:
+
+* What is the **only** required method of a class-based component?
+* How many times is `componentDidMount` called in a component's lifecycle?
+* What lifecycle method is called any time a component updates?
+* What is a potential issue that could occur when using `setState` inside of `componentDidUpdate`? How can we avoid this issue?
 
 ## We do: Exploring the Lifecycle methods (20 min / 0:40)
 
@@ -90,7 +98,7 @@ We're going to use a module named `axios` to make our calls. Axios is a node mod
 
 Read more at the [Axios Documentation](https://github.com/mzabriskie/axios)
 
-> Note: Axios is just one of many Javascript libraries that we could use for handling requests. One of the big selling points of javascript is the ability to mix and match technologies according to preference. Other commonly-used tools for handling requests are fetch and jQuery.
+> Note: Axios is just one of many Javascript libraries that we could use for handling requests. One of the big selling points of Javascript is the ability to mix and match technologies according to preference. Other commonly-used tools for handling requests are fetch and jQuery.
 
 To load in the Axios module:
 

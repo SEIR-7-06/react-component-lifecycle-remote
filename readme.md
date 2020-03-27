@@ -150,19 +150,19 @@ We will be using Axios to query the PokéAPI in [this exercise](https://git.gene
 
 As we dive deeper in to each of the component lifecycle methods and what they're used for, we'll work through the following exercise to create a simple flashcards app.
 
-The starter code for this exercise can be found [here](https://git.generalassemb.ly/SF-WDI/flashcards).
+The starter code for this exercise can be found [here](https://git.generalassemb.ly/SF-SEI/flashcards).
 
 Let's go ahead and clone the repository:
 
 ```bash
-$ git clone https://git.generalassemb.ly/SF-WDI/flashcards
+$ git clone https://git.generalassemb.ly/SF-SEI/flashcards
 $ npm install
 $ npm start
 ```
 
 The app we're going to build will pull characters from a dictionary API and create a flashcard for each word and definition`. The app will then cycle through each word, giving the user 10 seconds to think of the definition before moving on to the next card. 
 
-The solution code is [here](https://git.generalassemb.ly/SF-WDI/flashcards/tree/solution)
+The solution code is [here](https://git.generalassemb.ly/SF-SEI/flashcards/tree/solution)
 
 ### We Do: Adding the Flashcard Container
 

@@ -84,11 +84,28 @@ This exercise is a simple, 2 "page" website where each page is a component. We'l
 
 > Add the mounting methods to HomePage.js and the update methods to AboutPage.js. console.log something in each method to understand the order.
 
-### An Aside: Axios (10 min / 0:50)
 
-For our first example of working with the component lifecycle methods, we'll be retrieving data from an API. API calls are asynchronous, so we have to be mindful of how long our request will take and when our components will render.
+### An Aside: Fetch (10 min / 0:50)
 
-We're going to use a module named `axios` to make our calls. Axios is a node module commonly used with React to send HTTP requests to an API. It functions much like jQuery's AJAX method, or window.fetch(). Some benefits to using Axios:
+For our first example of working with the component lifecycle methods, we'll be retrieving data from an API. AJAX calls are asynchronous, so we have to be mindful of how long our request will take and when our components will render.
+
+We're going to use a module named `fetch` to make our calls. Fetch is commonly used with React (and other frontend JS frameworks) to send HTTP requests to an API.
+
+To use Fetch to query an API at a given url endpoint:
+
+```js
+fetch('url')
+  .then((response) => {
+    console.log(response)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+```
+
+### An Alternative: Axios
+
+As an alternative to `fetch`, we could also use a module named `axios` to make our calls. Axios is a node module commonly used with React to send HTTP requests to an API. It functions much like jQuery's AJAX method, or `window.fetch()` but it includes extra features. Some benefits to using Axios:
 
 * It is a promise-based library with an interface for simpler and cleaner syntax (compared to native XHR especially).
 * It is lightweight and focused solely on handling HTTP requests (as opposed to jQuery which brings in an extensive set of new functions and methods)
@@ -97,12 +114,10 @@ We're going to use a module named `axios` to make our calls. Axios is a node mod
 
 Read more at the [Axios Documentation](https://github.com/mzabriskie/axios)
 
-> Note: Axios is just one of many Javascript libraries that we could use for handling requests. One of the big selling points of Javascript is the ability to mix and match technologies according to preference. Other commonly-used tools for handling requests are fetch and jQuery.
-
 To load in the Axios module:
 
 ```js
-// If you are using Babel to compile your code
+// If you are using Babel to compile your code (you'll know you're using babel if your app started with create-react-app)
 import axios from 'axios'
 
 // In standard vanilla Javascript
@@ -121,31 +136,6 @@ axios.get('url')
   })
 ```
 
-<!-- You can also append values to the parameters by passing in a second input to `.get()`:
-
-```js
-  axios.get('url', {
-    params: {
-      key1: value1,
-      key2: value2
-    }
-  })
-  .then((response) => {
-    console.log(response)
-  })
-  .catch((error) => {
-    console.log(error)
-  })
-```
-
-Which would result in a GET request to: `url?key1=value1&key2=value2`.
- -->
-
-<!-- ### We Do: Axios and AJAX inside a React Component:
-> 15 min / 1:05
-
-We will be using Axios to query the PokéAPI in [this exercise](https://git.generalassemb.ly/ga-wdi-exercises/react-components-axios). -->
-
 ## Flashcards (90 min / 2:30)
 
 As we dive deeper in to each of the component lifecycle methods and what they're used for, we'll work through the following exercise to create a simple flashcards app.
@@ -156,17 +146,18 @@ Let's go ahead and clone the repository:
 
 ```bash
 $ git clone https://git.generalassemb.ly/SF-SEI/flashcards
+$ npm update
 $ npm install
 $ npm start
 ```
 
-The app we're going to build will pull characters from a dictionary API and create a flashcard for each word and definition`. The app will then cycle through each word, giving the user 10 seconds to think of the definition before moving on to the next card. 
+The app we're going to build will pull characters from a dictionary API and create a flashcard for each word and definition. The app will then cycle through each word, giving the user 10 seconds to think of the definition before moving on to the next card. 
 
 The solution code is [here](https://git.generalassemb.ly/SF-SEI/flashcards/tree/solution)
 
 ### We Do: Adding the Flashcard Container
 
-#### Use Axios to query the dictionary API
+#### Use `fetch` or Axios to query the dictionary API
 
 <details>
     <summary>Solution</summary>

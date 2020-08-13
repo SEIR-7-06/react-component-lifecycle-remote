@@ -6,7 +6,7 @@ class HomePage extends Component {
     console.log("Home.js: In constructor()");
   }
 
-  componentDidMount(){
+  componentDidMount() {
     console.log('Home.js In componentDidMount()');
   }
 
@@ -14,7 +14,7 @@ class HomePage extends Component {
   //   console.log(`Home.js: In componentDidUpdate(). prevProps: ${JSON.stringify(prevProps)}`);
   // }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     console.log('Home.js: In componentWillUnmount()');
   }
 

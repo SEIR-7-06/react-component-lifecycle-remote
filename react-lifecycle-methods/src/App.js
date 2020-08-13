@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import ErrorPage from './ErrorPage';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -9,10 +10,10 @@ class App extends Component {
     console.log('App.js: In constructor()');
     this.state = {
       page: 'home',
-    }
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     console.log('App.js In componentDidMount()');
   }
 
@@ -21,21 +22,21 @@ class App extends Component {
   }
 
   setPageToHome(e) {
-    e.preventDefault()
+    e.preventDefault();
     this.setState({
       page: 'home',
-    })
+    });
   }
 
   setPageToAbout(e) {
-    e.preventDefault()
+    e.preventDefault();
     this.setState({
       page: 'about',
-    })
+    });
   }
 
   render() {
-    console.log('App.js: In render()')
+    console.log('App.js: In render()');
     let Page;
     let pageTitle;
 

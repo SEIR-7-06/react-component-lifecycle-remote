@@ -5,26 +5,31 @@ import React, { Component } from 'react';
 class AboutPage extends Component {
   state = {
     counter: 0,
-  }
+  };
 
-  componentDidMount(){
+  componentDidMount() {
     console.log('AboutPage.js: In componentDidMount()');
     //uncomment the below line and notice the change in output and the counter value
     // this.setState({counter:2}) 
   }
 
-  shouldComponentUpdate(nextProps, nextState){
+  shouldComponentUpdate(nextProps, nextState) {
     console.log(`AboutPage.js: In shouldComponentUpdate(). nextState: ${JSON.stringify(nextState)}`);
-    /*uncommment below two lines of code to check 
-      if the User is decrementing do not update the counter value
-      else update it*/
-      console.log('Next State = ', nextState)
-    // if(nextState.counter+1 === this.state.counter)
+
+    /*
+      uncommment the conditional below to prevent component re-render if the decrement button is clicked.
+      What happens if you try incrementing after decrementing. Why?
+    */
+    console.log('Next State = ', nextState);
+
+    // if(nextState.counter + 1 === this.state.counter) {
     //   return false;
+    // }
+
     return true; //return false to see the change in output. Notice any difference??
   }
 
-  componentDidUpdate(prevProps, prevState){
+  componentDidUpdate(prevProps, prevState) {
     console.log(`AboutPage.js: In componentDidUpdate(). prevState: ${JSON.stringify(prevState)}`);
   }
 
@@ -34,8 +39,8 @@ class AboutPage extends Component {
 
     this.setState({
       counter,
-    })
-  }
+    });
+  };
 
   decrementCounter = () => {
     let { counter } = this.state;
@@ -43,8 +48,8 @@ class AboutPage extends Component {
 
     this.setState({
       counter,
-    })
-  }
+    });
+  };
 
   render() {
     console.log('AboutPage.js: In render()');

@@ -1,51 +1,76 @@
-# Component Lifecycle Methods Cheat Sheet
+# Component Lifecycle Method Cheat Sheet
 
-### `constructor()`
+## Commonly Used
 
-We first saw the constructor when we were introduced to `state`. Like any JavaScript class, the `constructor` method is called when a component is instantiated.
+### Mounting Methods
 
-In a class constructor, you must call `super` before you do anything else. So a React component constructor in its most basic form looks like this:
+#### Constructor()
+- set up initial state
+- bind event handler methods to instance
 
-```javascript
-constructor(props) {
-  super(props)
-}
-```
+*NOTE: Do not use setState here*
 
-You don't need to define a constructor if that's all it does, though. This happens automatically when your component is invoked. A common use of the constructor is to initialize state using the props passed to the component - as we have been doing!
+#### render()
+- Allowed in render
+    - React Elements
+    - Arrays and Fragments
+    - Strings/numbers
+    - Booleans or null
+- Keep render as pure as possible
+    - No side effects like ajax calls
 
-```javascript
-constructor(props) {
-  super(props)
+*NOTE: Do not use setState here will cause infinite loop*
 
-  this.state = {
-     flashcards: [],
-     currentIndex: 0,
-     show: false
-  }
-}
-```
+#### componentDidMount()
+- runs immediately after component output
+- allows component to render then do an action
+    - this is best time for side effects including ajax calls
+        
+*NOTE: You can run setState here. Initial state should be done in constructor. Use componentDidMount and setState together for network requests*
 
-> This constructor sets the initial `flashcards` state of the component to an empty array. Then, using `setState`, you can add flashcards, delete them, or whatever else your component allows. We also set the `currentIndex` to 0. This will be the index of the card we are currently on. `show` will represent whether the definition of the card is visible or not.
+### Updating Methods
 
-### `UNSAFE_componentWillMount()`
+#### componentDidUpdate(prevProps,prevState, snapshot)
+- called after props have updated **ONLY** after the first render
+- Good place for network requests as long as you compare the prop changes to prevent infinite loop
 
-This method is called immediately before a component is rendered to the DOM. You generally won't need to use this method. Advanced use-cases like server-rendering are usually the only ones in which `componentWillMount` is needed.
+*NOTE: You can run setState here. You want to only run setState if props have changed to prevent an infinite loop*
 
-### `componentDidMount()` and `componentWillUnmount()`
+### Unmounting Methods
 
-The `componentDidMount` method is called once, immediately after your component is rendered to the DOM. If you want to make an AJAX request when your component first renders, this is where to do it (_not_ in the constructor, or in `componentWillMount`). `componentWillMount` should not be used for server requests because it may be invoked multiple times before render in future versions of React. [Side effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) should be avoided in the `constructor`, and so server requests shouldn't be made there. The accepted answer on [this Stack Overflow](http://stackoverflow.com/questions/41612200/in-react-js-should-i-make-my-initial-network-request-in-componentwillmount-or-co) from a member of the React team at Facebook gives more detail.
+#### componentWillUnmount()
+- runs right before component is removed from dom
+- common use is remove event listeners or component clean up
+    
+*NOTE: Do not run setState here. Component is being terminated.*
 
-Another common use for `componentDidMount` is to bind event listeners to your component. You can then remove the event listeners in `componentWillUnmount`. For example, you could bind and unbind an event listener for a drag-drop component.
+## Rarely Used
 
-### `render()`
+####  static_getDerivedStateFromProps(props,state)
+- exists for where the state depends on changes in props over time
+    - Example: Component checks against props and next children to animate in or out
+- if you are performing a side effect like an ajax call in response to a prop change use componentDidUpdate instead
 
-This is the one method that every React class component **must** have. In render, you return JSX using the component's props and state. You should never set state in render - render should only react to changes in state or props, not create those changes.
+*NOTE: Can use setstate here.*
 
-### `UNSAFE_componentWillReceiveProps(newProps)`
+#### shouldComponentUpdate(nextProps,nextState)
+- returns a boolean letting react know if it should update
+- if you have a component that will never update you can set false here
+- render() and componentDidUpdate() will not run if this returns false
 
-This method is called any time your component receives new props. It is _not_ called with the initial props when your component initially mounts. If you need to change the state of your component based on changes in the props, this is where you do it. In a simple app, you generally won't need `componentWillReceiveProps`.
+*NOTE: Can not use setstate here. Can only return true or false.*
 
-### `shouldComponentUpdate`, `UNSAFE_componentWillUpdate`, `componentDidUpdate`
+#### getSnapshotBeforeUpdate(prevProps,prevState)
+- in specific occasions this will capture data from dom before it is changed
+    - Example: scroll position
+- snapshot value or null should be returned
+- this is where componentDidUpdate gets it's snapshot data
 
-These methods are called when a component's props or state change, and are generally used for performance optimizations. React is quite fast by itself, and you usually don't need to concern yourself with these methods outside of a large app with many dynamic components.
+*NOTE: Can not use setstate here. Only return snapshot value or null. *
+
+#### componentDidCatch(error,info)
+- used in components to turn them into Error Boundaries
+- catches errors in children compnent tree that crashed
+- errors are caught in rendering, lifecycle methods, and in constructors
+
+*NOTE: Can not use setState here.*
